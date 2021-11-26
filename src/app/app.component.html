@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="home-page">
+
+  <div class="topnav" id='topbar' ngFor="let user of users">
+    <a class="active" href="#home" (click)="refresh()">Home</a>
+    <div class="hiddenbtns" hidden>
+      <a href="#users" hidden>Edit Users</a>
+      <a href="#trains" hidden>Edit Trains</a>
+      <a href="#cities" hidden>Edit Cities</a>
+      <a href="#tickets" hidden>Edit Tickets</a>
+    </div>
+    <div class="topnav-right">
+      <a (click)="onOpenModal(null,'login')">Log in</a>
+      <a href="#signup" (click)="onOpenModal(null,'signup')">Sign up</a>
+    </div>
+  </div>
+
+  <div class="center" id="searchdiv">
+    <h2>Buy Ticket Here!</h2>
+    <div class="departure-selection">
+      <label class="selection-label" for="departure">Select Departure</label>
+      <select class="selectbox" id="selection">
+        <option value="ankara">Ankara</option>
+        <option value="istanbul">İstanbul</option>
+        <option value="eskişehir">Eskişehir</option>
+        <option value="Konya">Konya</option>
+      </select>
+    </div>
+    <div class="departure-selection">
+      <label class="selection-label2" for="departure">Select Arrival</label>
+      <select class="selectbox" id="selection">
+        <option value="ankara">Ankara</option>
+        <option value="istanbul">İstanbul</option>
+        <option value="eskişehir">Eskişehir</option>
+        <option value="Konya">Konya</option>
+      </select>
+    </div>
+    <div class="datediv">
+      <p>Select Your journey Date</p>
+      <input type="date" id="date">
+
+    </div>
+    <button class="button-search" (click)="hide()" (click)="hide2()">Search Train! </button>
+  </div>
+
+  <div id="trainlist">
+    <app-train-list></app-train-list>
+  </div>
+
+  <!-- loginModal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Sign in</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="name">Username</label>
+              <input type="text" ngModel name="name" class="form-control" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Password</label>
+              <input type="password" ngModel name="email" class="form-control" id="password" placeholder="Password"
+                required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Log in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- signUpModal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Sign in</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" ngModel name="name" class="form-control" id="name" placeholder="name" required>
+            </div>
+            <div class="form-group">
+              <label for="name">Surname</label>
+              <input type="text" ngModel name="surname" class="form-control" id="surname" placeholder="Surname" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" ngModel name="tel" class="form-control" id="tel" placeholder="Phone" required>
+           </div>
+            <div class="form-group">
+              <label for="name">Username</label>
+              <input type="text" ngModel name="username" class="form-control" id="usernameAdd" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Password</label>
+              <input type="password" ngModel name="email" class="form-control" id="passwordAdd" placeholder="Password"
+                required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="closeButton" data-dismiss="modal">Close</button>
+          <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

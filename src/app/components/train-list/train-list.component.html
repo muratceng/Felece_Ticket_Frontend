@@ -1,0 +1,27 @@
+<table class ="table" style="width:100%">
+    <thead class="thead-dark">
+        <tr>
+            <th style="text-align:center">Departure id</th>
+            <th style="text-align:center">Arrival id</th>
+            <th style="text-align:center">Date</th>
+            <th style="text-align:center">Price</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tempTrain of trains">
+            <td style="text-align:center">{{tempTrain.departure_id}}</td>
+            <td style="text-align:center">{{tempTrain.arrival_id}}</td> 
+            <td style="text-align:center">{{tempTrain.date}}</td> 
+            <td style="text-align:center">{{tempTrain.price | currency:'USD'}}</td>
+            <td><button class="editbtn" >buy</button></td>
+        </tr>
+    </tbody>
+
+    
+
+
+</table>
+
+
+
